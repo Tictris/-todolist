@@ -2,8 +2,9 @@
 
 @section('title','Register Page')
 
-@section('sidebar')
-<h1>This is the register page</h1>
+@section('content')
+<div class="container">
+    <h1>This is the register page</h1>
     <form action="{{ route('register') }}" method="post">
         @csrf
 
@@ -30,4 +31,5 @@
         <button type="submit">Register</button>
 
     </form>
+</div>
 @endsection

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Todo;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Authentication;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\TodoController;
 
 /*
@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 // Authentication
-Route::controller(Authentication::class)->group(function () {
+Route::controller(AuthenticationController::class)->group(function () {
     // register routes...
     Route::post('/register', 'register')->name('register');
     Route::view('/register', 'authentication.register');
@@ -33,11 +33,13 @@ Route::controller(Authentication::class)->group(function () {
 });
 
 //todo
-Route::controller(TodoController::class)->group(function () {
-    //view todo list
+Route::middleware(['CheckUser'])->group(function () {
+    Route::controller(todoController::class)->group(function (){
+            //view todo list
     Route::get('/todo', 'index')->name('index');
     //create new task
     Route::post('/todo/store', 'store')->name('store');
     //delete task(s)
     Route::post('/todo/delete', 'delete')->name('delete');
+    });
 });

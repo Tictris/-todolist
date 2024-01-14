@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CheckToken
+class CheckUser
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,11 @@ class CheckToken
      */
     public function handle(Request $request, Closure $next)
     {
-        $token = Auth::guard('web')->user()->tokens();
-
-        if($token->exists()){
+        if(Auth::check()) {
+            // User is logged in
             return $next($request);
         } else {
-            return redirect('/');
+            abort(401);
         }
     }
 }

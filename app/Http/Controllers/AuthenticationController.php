@@ -38,8 +38,6 @@ class AuthenticationController extends Controller
 
         if(Auth::attempt($credentials)){
 
-            session()->put('name', $credentials->name);
-
             return redirect()->route('index');
         } else {
             return response()->json([
@@ -54,7 +52,11 @@ class AuthenticationController extends Controller
             //logout authenticated user
             Auth::logout();
 
-            return redirect()->route('/');
+            $r->session()->invalidate();
+
+            $r->session()->regenerateToken();
+
+            return redirect('/');
 
     }
 }

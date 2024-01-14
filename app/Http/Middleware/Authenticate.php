@@ -12,7 +12,7 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
-    protected function redirectTo($request, Closure $next)
+    protected function redirectTo($request)
     {
         //get the token from the request
         $token = $request->bearerToken();

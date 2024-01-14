@@ -7,19 +7,13 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/myStyle.css') }}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    
+
 </head>
 <body>
 
-
-    <div class="">
         @yield('sidebar')
-    </div>
-
-    <div class="">
+        
         @yield('content')
-    </div>
-
 
 </body>
 </html>

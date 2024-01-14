@@ -3,13 +3,19 @@
 @section('title','HomePage')
 
 @section('content')
+<div class="out-container">
+    <div>
+        <div class="header">
+            <h1>Welcome to my Todo List!</h1>
+        </div>
+            <div class="container-edit">
+                <div class="user-button">
+                    <a href="/register"><button >Register</button></a>
+                    <a href="/login"><button >Login</button></a>
+                </div>
 
-    <div class="home-container">
-
-        <h1>This is the home page</h1>
-        <a href="/register">Register</a>
-        <a href="/login">Login</a>
-
+            </div>
     </div>
+</div>
 
 @endsection
